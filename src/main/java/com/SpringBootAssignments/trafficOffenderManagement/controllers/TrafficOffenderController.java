@@ -2,22 +2,21 @@ package com.SpringBootAssignments.trafficOffenderManagement.controllers;
 
 import com.SpringBootAssignments.trafficOffenderManagement.dto.TrafficOffenderDTO;
 import com.SpringBootAssignments.trafficOffenderManagement.models.TrafficOffender;
-import com.SpringBootAssignments.trafficOffenderManagement.services.impl.TrafficOffenderService;
+import com.SpringBootAssignments.trafficOffenderManagement.services.impl.TrafficOffenderServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1")
 public class TrafficOffenderController {
-    private final TrafficOffenderService trafficOffenderService;
+    private final TrafficOffenderServiceImpl trafficOffenderService;
 
-    public TrafficOffenderController(TrafficOffenderService trafficOffenderService){
+    public TrafficOffenderController(TrafficOffenderServiceImpl trafficOffenderService){
         this.trafficOffenderService = trafficOffenderService;
     }
 
@@ -33,14 +32,14 @@ public class TrafficOffenderController {
     }
 
     @GetMapping("/trafficOffenders")
-    public ResponseEntity<List<TrafficOffender>> getAllTrafficOffenders(@RequestParam(required = false) String name){
+    public ResponseEntity<List<TrafficOffender>> getAllTrafficOffenders(@RequestParam(required = false) String firstname){
         try{
             List<TrafficOffender> trafficOffenders = new ArrayList<TrafficOffender>();
-            if(name == null){
+            if(firstname == null){
                 trafficOffenderService.getAllTrafficOffenders().forEach(trafficOffenders::add);
             }
             else{
-                trafficOffenderService.getAllTrafficOffenders(name).forEach(trafficOffenders::add);
+                trafficOffenderService.getAllTrafficOffenders(firstname).forEach(trafficOffenders::add);
             }
 
             if(trafficOffenders.isEmpty()){

@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface TrafficOffenderRepository extends JpaRepository<TrafficOffender, Long> {
-    List<TrafficOffender> findByFirstnameContainingOrLastnameContainingAllIgnoreCase(String firstname, String lastname);
+    List<TrafficOffender> findByFirstnameContainingIgnoreCase(String firstname);
 }

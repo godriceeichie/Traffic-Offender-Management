@@ -6,7 +6,7 @@ import com.SpringBootAssignments.trafficOffenderManagement.models.TrafficOffende
 import java.util.List;
 import java.util.Optional;
 
-public interface TrafficOffenderInterface {
+public interface TrafficOffenderService {
     public TrafficOffender createTrafficOffender(TrafficOffenderDTO trafficOffenderDTO);
     public Optional<TrafficOffender> getTrafficOffender(Long id);
     public List<TrafficOffender> getAllTrafficOffenders(String name);
